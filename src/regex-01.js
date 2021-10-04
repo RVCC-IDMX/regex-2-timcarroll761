@@ -18,6 +18,8 @@
  */
 function testString(str, re) {
   // write your code here & return value
+  const reg = new RegExp(re);
+  return reg.test(str);
 }
 
 /**
@@ -34,6 +36,12 @@ function testString(str, re) {
  */
 function testStringOr(str, arr) {
   // write your code here & return value
+  let output = false;
+  for (let i = 0; i < arr.length; i += 1) {
+    const regex = new RegExp(arr[i]);
+    if (regex.test(str)) output = true;
+  }
+  return output;
 }
 
 /**
@@ -48,6 +56,8 @@ function testStringOr(str, arr) {
  */
 function testStringIgnoreCase(str, match) {
   // write your code here & return value
+  const regex = new RegExp(match, 'i');
+  return regex.test(str);
 }
 
 /**
@@ -61,6 +71,7 @@ function testStringIgnoreCase(str, match) {
  */
 function countVowels(str) {
   // write your code here & return value
+  return str.match(/[AaEeIiOoUu]/g).length;
 }
 
 /**
@@ -75,6 +86,10 @@ function countVowels(str) {
  */
 function replaceVowels(str, ch) {
   // write your code here & return value
+  const workStr = str.replace(/[aeiou]/gi, ch);
+  const chars = `\\${ch}\\${ch}`;
+  const filter = new RegExp(chars, 'g');
+  return workStr.replace(filter, ch);
 }
 
 /**
@@ -88,6 +103,8 @@ function replaceVowels(str, ch) {
  */
 function isPrefix(str, prefix) {
   // write your code here & return value
+  const regex = new RegExp(prefix, 'i');
+  return str.search(regex) === 0;
 }
 
 module.exports = {
